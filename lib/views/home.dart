@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:weather_app/utils/colors.dart';
 import 'package:weather_app/utils/globals.dart';
 import 'package:weather_app/utils/widgets/dialog.dart';
 import 'package:weather_app/view_models/home_vm.dart';
+import 'package:weather_app/views/current_weather.dart';
 import 'package:weather_app/views/profile.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,14 +19,13 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
   
   late Size screenSize;
   int pageIndex = 0;
-  int selectedIndex = 3;
+  int selectedIndex = 0;
   GlobalKey internetModalKey = GlobalKey();
   StreamSubscription<ConnectivityResult>? _connectivitySubscription;
   final HomeViewModel homeViewModel = HomeViewModel(); 
 
   final pages = [
-    const ProfileView(),
-    const ProfileView(),
+    const CurrentWeatherView(),
     const ProfileView(),
     const ProfileView()
   ];
@@ -35,6 +36,9 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     checkInternetAvailability();
+    SystemChrome.setSystemUIOverlayStyle(
+      CustomColor.darkGreyBar
+    );
   }
 
   /// Checks if internet connection is enabled. If not, throws up a dialog that highlights
@@ -53,8 +57,7 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
               return ConfirmationDialog(
                 key: internetModalKey,
                 acceptAction: () {
-                  if (isConnected == true) {
-                   
+                  if (isConnected == true) {                 
                     Navigator.pop(context);
                   }
                 },
@@ -84,8 +87,16 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
     screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: SizedBox(
+        bottomNavigationBar: Container(
           height: screenSize.height * 0.08,
+          decoration: const BoxDecoration(
+            border :Border(
+              top: BorderSide(
+                color: Colors.black,
+                width: 1
+              )
+            )
+          ),
           child: BottomNavigationBar(
             iconSize: screenSize.height * 0.026,
             selectedFontSize: screenSize.height * 0.014,
@@ -94,7 +105,6 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
               color: Colors.black,
             ),
             unselectedFontSize: 14,
-            backgroundColor: Colors.white,
             currentIndex: selectedIndex,
             selectedItemColor: Colors.black,
             unselectedItemColor: Colors.grey,
@@ -115,22 +125,23 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
                   icon: Icon(
                     Icons.today_outlined,
                     size: 25,
-                    color: CustomColor.lightGrey,
-                  )
-              ),
-              BottomNavigationBarItem(
-                  activeIcon: Icon(
-                    Icons.location_on_outlined,
-                    size: 25,
-                    color: CustomColor.darkGrey,
+                    color: CustomColor.mediumDarkGrey,
                   ),
-                  label: "Location",
-                  icon: Icon(
-                    Icons.location_on_outlined,
-                    size: 25,
-                    color: CustomColor.lightGrey,
-                  )
+                  backgroundColor: CustomColor.lightGrey
               ),
+              // BottomNavigationBarItem(
+              //     activeIcon: Icon(
+              //       Icons.location_on_outlined,
+              //       size: 25,
+              //       color: CustomColor.darkGrey,
+              //     ),
+              //     label: "Location",
+              //     icon: Icon(
+              //       Icons.location_on_outlined,
+              //       size: 25,
+              //       color: CustomColor.mediumDarkGrey,
+              //     )
+              // ),
               BottomNavigationBarItem(
                   activeIcon: Icon(
                     Icons.favorite_border_outlined,
@@ -141,7 +152,7 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
                   icon: Icon(
                     Icons.favorite_border_outlined,
                     size: 25,
-                    color: CustomColor.lightGrey,
+                    color: CustomColor.mediumDarkGrey,
                   )
               ),
               BottomNavigationBarItem(
@@ -154,7 +165,7 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
                   icon: Icon(
                     Icons.person_outline_outlined,
                     size: 25,
-                    color: CustomColor.lightGrey,
+                    color: CustomColor.mediumDarkGrey,
                   )
               )
             ],

@@ -15,3 +15,7 @@ class FetchCurrentSuccess extends WeatherState {
   @override
   List<Object> get props => [response];
 }
+
+class LoadingWeatherState extends WeatherState {}
+
+class WeatherFailureState extends WeatherState {}

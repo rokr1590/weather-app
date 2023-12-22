@@ -18,7 +18,7 @@ class WeatherClient {
         try{
           forecastResponseModel = ForecastResponseModel.fromJson(response.response.data);
         } catch (e) {
-          print("Error in parsing json of Weather Response");
+          print("Error in parsing json of Weather Response ${e}");
           return ForecastResponseModel(error: "Error in parsing json");
         }
         return forecastResponseModel; 

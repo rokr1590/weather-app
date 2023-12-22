@@ -27,4 +27,9 @@ class CustomColor{
         statusBarColor: CustomColor.bgGrey,
         statusBarIconBrightness: Brightness.dark
       );
+  
+  static const SystemUiOverlayStyle darkGreyBar = SystemUiOverlayStyle(
+        statusBarColor: CustomColor.darkGrey,
+        statusBarIconBrightness: Brightness.dark
+      );
 }

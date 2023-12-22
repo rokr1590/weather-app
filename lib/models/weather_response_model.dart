@@ -49,7 +49,7 @@ class Daily {
   double? dewPoint;
   double? windSpeed;
   int? windDeg;
-  int? windGust;
+  double? windGust;
   List<Weather>? weather;
   int? clouds;
   int? pop;
@@ -83,15 +83,15 @@ class Daily {
     moonset = json['moonset'];
     moonPhase = json['moon_phase'];
     temp = json['temp'] != null ? new Temp.fromJson(json['temp']) : null;
-    feelsLike = json['feels_like'] != null
-        ? new FeelsLike.fromJson(json['feels_like'])
-        : null;
+    //feelsLike = json['feels_like'] != null
+    //    ? new FeelsLike.fromJson(json['feels_like'])
+    //    : null;
     pressure = json['pressure'];
     humidity = json['humidity'];
     dewPoint = json['dew_point'];
     windSpeed = json['wind_speed'];
     windDeg = json['wind_deg'];
-    windGust = json['wind_gust'];
+    //windGust = json['wind_gust'];
     if (json['weather'] != null) {
       weather = <Weather>[];
       json['weather'].forEach((v) {
@@ -100,7 +100,7 @@ class Daily {
     }
     clouds = json['clouds'];
     pop = json['pop'];
-    uvi = json['uvi'];
+    uvi = double.parse(json['uvi'].toString());
   }
 
   Map<String, dynamic> toJson() {

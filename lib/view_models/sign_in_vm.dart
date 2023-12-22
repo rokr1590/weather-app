@@ -52,7 +52,6 @@ class SignInViewModel extends ChangeNotifier{
       toggleLoading(value: true);
       await Future.delayed(const Duration(seconds: 1));
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-      print("Succcessfull!!!");
       resetToDefault();
     }
     catch(error){
