@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/view_models/current_weather_vm.dart';
+import 'package:weather_app/view_models/favorite_vm.dart';
 import 'package:weather_app/view_models/home_vm.dart';
 import 'package:weather_app/view_models/sign_in_vm.dart';
 import 'package:weather_app/views/home.dart';
@@ -22,6 +23,9 @@ Future<void> main() async {
       ),
       ChangeNotifierProvider(
         create: (_) => CurrentWeatherViewModel(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => FavoriteViewModel(),
       )
     ],
     child: const MyApp(),

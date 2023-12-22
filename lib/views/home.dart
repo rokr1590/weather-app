@@ -8,6 +8,7 @@ import 'package:weather_app/utils/globals.dart';
 import 'package:weather_app/utils/widgets/dialog.dart';
 import 'package:weather_app/view_models/home_vm.dart';
 import 'package:weather_app/views/current_weather.dart';
+import 'package:weather_app/views/favourites.dart';
 import 'package:weather_app/views/profile.dart';
 
 class HomeView extends StatefulWidget {
@@ -25,8 +26,8 @@ class HomeViewState extends State<HomeView> with WidgetsBindingObserver{
   final HomeViewModel homeViewModel = HomeViewModel(); 
 
   final pages = [
-    const CurrentWeatherView(),
-    const ProfileView(),
+    CurrentWeatherView(),
+    const FavoritesView(),
     const ProfileView()
   ];
 

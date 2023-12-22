@@ -8,6 +8,9 @@ part 'api_client.g.dart';
 
 class Apis {
   static const API_BASE_URL ="https://api.openweathermap.org/data/2.5/onecall?APPID=335cc08fb177116a777add4eac3f312b";
+  static const GOOGLE_MAP_API_KEY = "AIzaSyBkb_j-IGeapA-J1AVf6DJ09eHDXusEzlU";
+  static const GOOGLE_MAPS_PLACE_AUTO = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
+  static const GOOGLE_MAPS_PLACE_DETAIL = "https://maps.googleapis.com/maps/api/place/details/json";
 }
 
 RestClient getApi({bool isLogEnable = true}) {

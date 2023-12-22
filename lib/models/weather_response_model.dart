@@ -86,11 +86,11 @@ class Daily {
     //feelsLike = json['feels_like'] != null
     //    ? new FeelsLike.fromJson(json['feels_like'])
     //    : null;
-    pressure = json['pressure'];
-    humidity = json['humidity'];
-    dewPoint = json['dew_point'];
-    windSpeed = json['wind_speed'];
-    windDeg = json['wind_deg'];
+    //pressure = json['pressure'];
+    //humidity = json['humidity'];
+    //dewPoint = json['dew_point'];
+    //windSpeed = json['wind_speed'];
+    //windDeg = json['wind_deg'];
     //windGust = json['wind_gust'];
     if (json['weather'] != null) {
       weather = <Weather>[];
@@ -98,9 +98,9 @@ class Daily {
         weather!.add(new Weather.fromJson(v));
       });
     }
-    clouds = json['clouds'];
-    pop = json['pop'];
-    uvi = double.parse(json['uvi'].toString());
+    //clouds = json['clouds'];
+    //pop = json['pop'];
+    //uvi = double.parse(json['uvi'].toString());
   }
 
   Map<String, dynamic> toJson() {
@@ -144,12 +144,12 @@ class Temp {
   Temp({this.day, this.min, this.max, this.night, this.eve, this.morn});
 
   Temp.fromJson(Map<String, dynamic> json) {
-    day = json['day'];
-    min = json['min'];
-    max = json['max'];
-    night = json['night'];
-    eve = json['eve'];
-    morn = json['morn'];
+    day = double.parse(json['day'].toString());
+    min = double.parse(json['min'].toString());
+    max = double.parse(json['max'].toString());
+    night = double.parse(json['night'].toString());
+    eve = double.parse(json['eve'].toString());
+    morn = double.parse(json['morn'].toString());
   }
 
   Map<String, dynamic> toJson() {

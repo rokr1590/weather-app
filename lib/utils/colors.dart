@@ -13,6 +13,7 @@ class CustomColor{
   static const Color lineColorGrey = Color(0xff979797);
   static const Color fontDarkGrey = Color(0xff54656f);
   static const Color grey = Color(0xffA2B0B8);
+  static const Color lightGreyBackground = Color(0xfff0f2f5);
   static const Color red = Colors.red;
     static const Color toastErrorColor = Color(0xfff5c4c4);
   static const Color toastWarningColor = Color(0xfffff5b3);

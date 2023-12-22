@@ -2,8 +2,9 @@ class LocationModel {
   String? name;
   double? latitude;
   double? longitude;
+  bool? isFavourite;
 
-  LocationModel({this.name, this.latitude, this.longitude});
+  LocationModel({this.name, this.latitude, this.longitude,this.isFavourite=false});
 
   LocationModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
